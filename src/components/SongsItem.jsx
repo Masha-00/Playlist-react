@@ -1,10 +1,12 @@
+import { useContext } from 'react';
+import { SongContext } from '../App';
 import like from '../like.svg';
 import Button from '../UI/button/button';
 import '../App.css';
-import Like from '../UI/button/Like';
 import classes from '../components/SongsItem.module.css';
 
-function SongsItem({ song, deleteSong }){
+function SongsItem({ song }) {
+    const { deleteSong, setLiked } = useContext(SongContext);
     return(
         <div className={classes.Songs__item}>
             <div className={classes.Name}>
@@ -25,7 +27,16 @@ function SongsItem({ song, deleteSong }){
             </div>
             <div className={classes.BtnDel}>
             <img className={classes.LikeNoActive} src={like} alt="" />
-            <Like/>
+            <div className="song_item">
+            {
+                song.isLiked
+                    ? <img src={like} alt="like" width="40"/>
+                    : null
+            }
+            </div>
+            <Button customClassName='setLike' onClick={() => setLiked(song.id)}>
+                { !song.isLiked ? 'Like' : 'Dislike'}
+            </Button>
             <Button customClassName='DeleteSong' onClick={() => deleteSong(song.id)}>&times;</Button>
             </div>
         </div>

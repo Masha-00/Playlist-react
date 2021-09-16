@@ -31,7 +31,7 @@
 .DeleteSong:hover{
     background-color: rgb(236, 127, 127);
 }
-.LikeSong{
+/* .LikeSong{
     font-size: 33px;
     border-radius: 10px;
     background: transparent;
@@ -41,4 +41,14 @@
 .LikeSong:hover{
     background-color: red;
     color: #fff;
+} */
+.setLike{
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #E5901E;
+    width: 80px;
+}
+.setLike:hover{
+    background-color: #f78c00;
+    border: none;
 }

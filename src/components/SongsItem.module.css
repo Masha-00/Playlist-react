@@ -23,7 +23,8 @@
 .BtnDel { 
     grid-area: btn-del;
     align-self: center;
-    justify-self: end;
+    display: flex;
+    justify-content: space-between;
     padding-right: 50px;
 }
 .Info { grid-area: info; }
