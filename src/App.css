@@ -20,6 +20,8 @@ span{
     color: #ebeced;
 }
 .control{
+    max-width: 1180px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-around;
     align-items: center;

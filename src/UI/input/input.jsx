@@ -1,9 +1,9 @@
 import React from "react";
 import classes from './input.module.css';
 
-const Input = (proprs, customClassName) => {
+const Input = (proprs) => {
     return(
-        <input {...proprs} className={classes[customClassName]}/>
+        <input {...proprs} className={classes.input}/>
     );
 }
 
