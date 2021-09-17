@@ -15,10 +15,10 @@ export const initialSongs = [{
   isLiked: true,
 },{
   id: 3,
-  name: 'Like a Rolling Stone',
-  author: 'Боб Дилан',
-  releaseDate: '11.08.1965',
-  albumName: 'Highway 61 Revisited',
+  name: 'One More Time',
+  author: 'Daft Punk',
+  releaseDate: '05.03.2000',
+  albumName: 'Britney Spears',
   isLiked: false,
 },{
   id: 4,
@@ -29,10 +29,10 @@ export const initialSongs = [{
   isLiked: true,
 },{
   id: 5,
-  name: 'One More Time',
-  author: 'Daft Punk',
-  releaseDate: '05.03.2000',
-  albumName: 'Britney Spears',
+  name: 'Like a Rolling Stone',
+  author: 'Боб Дилан',
+  releaseDate: '11.08.1965',
+  albumName: 'Highway 61 Revisited',
   isLiked: false,
 }];
 

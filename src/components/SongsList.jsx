@@ -1,5 +1,4 @@
 import SongsItem from './SongsItem'
-import '../App.css';
 
 function SongsList({ songs, deleteSong }){
     return(

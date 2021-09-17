@@ -1,11 +1,13 @@
-import React, {useState, useEffect, useMemo, useContext} from 'react';
+import React, {useState, useMemo} from 'react';
+import '../src/App.css';
 import SongList from './components/SongsList';
 import AddSong from './components/AddSong';
-import Counter from './components/Counter'
 import Button from './UI/button/button';
 import SongModal from './UI/modal/SongModal';
+import Counter from './components/Counter'
+import Search from './components/Search';
 import { initialSongs } from './songs';
-import '../src/App.css';
+import Filter from './components/Filter';
 
 export const SongContext = React.createContext();
 
@@ -13,6 +15,7 @@ function App() {
   const [songs, setSongs] = useState(initialSongs);
   const [modal, setModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filter, setFilter] = useState('');
 
   const generateId = () => {
     if(!songs.length) {
@@ -39,14 +42,23 @@ function App() {
     }));
   }
 
+  const filteredArray = useMemo(() => {
+    return songs.filter(song => song.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    .sort((a, b) => new Date(b[filter]) - new Date(a[filter]))
+  }, [searchQuery, filter, songs]);
+
   return (
     <div className="App">
-      <Button customClassName='OpenModal' onClick={() => setModal(true)}>ADD SONG</Button>
+      <div className="control">
+        <Button customClassName='OpenModal' onClick={() => setModal(true)}>ADD SONG</Button>
+        <Filter filter={filter} setFilter={setFilter} />
+        <Search customClassName="Search" searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      </div>
 			<SongModal visible={modal} setVisible={setModal}>
       <AddSong addSong={addSong} generateId={generateId} songs={songs}/>
 			</SongModal>
       <SongContext.Provider value={{ deleteSong, setLiked }}>
-        <SongList songs={songs}/>
+        <SongList songs={filteredArray}/>
       </SongContext.Provider>
       <Counter songs={songs}/>
     </div>
